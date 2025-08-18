@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./frontend
+      args:
+        VITE_PUBLIC_SITE_URL: https://one-earth.info
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+  api:
+    build: ./backend
+    ports:
+      - "8081:8080"
+    environment:
+      - PORT=8080
