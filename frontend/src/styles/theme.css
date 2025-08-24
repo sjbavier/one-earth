@@ -1,0 +1,70 @@
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #FAF8F5;
+  --surface: #FFFFFF;
+  --muted: #F2EFE8;
+  --ink: #1F2328;
+  --ink-2: #5A5F66;
+  --border: #E6E1D9;
+  --grid: #E5DFD5;
+  --brand: #0B6E99;
+  --accent: #C65F29;
+  --good: #2D8A34;
+  --bad: #B33630;
+  --warn: #B8821B;
+  --chart-1: #0B6E99;
+  --chart-2: #2A9D8F;
+  --chart-3: #6E5A9E;
+  --chart-4: #E9C46A;
+  --chart-5: #E76F51;
+  --chart-6: #6C757D;
+  --radius: 16px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0B0B0C;
+  --surface: #1C1C1E;
+  --muted: #2C2C2E;
+  --ink: #FFFFFF;
+  --ink-2: rgba(235,235,245,.6);
+  --border: #3A3A3C;
+  --grid: #2B2B2E;
+  --brand: #0A84FF;
+  --accent: #FF9F0A;
+  --good: #30D158;
+  --bad: #FF453A;
+  --warn: #FFD60A;
+  --chart-1: #0A84FF;
+  --chart-2: #30D158;
+  --chart-3: #FF9F0A;
+  --chart-4: #FF375F;
+  --chart-5: #BF5AF2;
+  --chart-6: #64D2FF;
+  --radius: 16px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.5), 0 6px 24px rgba(0,0,0,.4);
+}
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans",
+               "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+a { color: var(--brand); }
+hr { border: 0; border-top: 1px solid var(--border); }
+.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-1); padding: 16px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--muted); color: var(--ink-2); border: 1px solid var(--border); }
+.stat { font-variant-numeric: tabular-nums; font-weight: 600; }
+.muted { color: var(--ink-2); }
+.border { border: 1px solid var(--border); }
+.gridline { stroke: var(--grid); }
+.bg-surface { background: var(--surface); }
+.bg-muted { background: var(--muted); }
+.text-ink { color: var(--ink); }
+.text-ink-2 { color: var(--ink-2); }
+.text-brand { color: var(--brand); }
