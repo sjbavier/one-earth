@@ -1,0 +1,74 @@
+# -----------------------------
+# One Earth .gitignore
+# -----------------------------
+
+# Node / Frontend
+frontend/node_modules/
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/sdks
+!frontend/.yarn/versions
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Yarn cache (optional)
+# comment out if you want "zero-install" by committing the cache
+.yarn/cache/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# OS / System
+ehthumbs.db
+Icon?
+*.iml
+
+# Backend (Go)
+backend/bin/
+backend/out/
+backend/.cache/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go coverage
+*.coverprofile
+
+# Docker
+**/.env
+**/.env.local
+**/.env.*.local
+docker-compose.override.yml
+
+# Misc
+*.log
+*.tmp
+*.bak
+
+# -----------------------------
+# End of One Earth .gitignore
+# -----------------------------
