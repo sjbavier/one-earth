@@ -1,0 +1,53 @@
+# -----------------------------
+# One Earth .gitattributes
+# -----------------------------
+
+# Auto-detect text files and ensure LF line endings
+* text=auto eol=lf
+
+# Ensure consistent line endings for these explicitly
+*.sh      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.json    text eol=lf
+*.md      text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.go      text eol=lf
+Dockerfile text eol=lf
+
+# Treat lockfiles as text, normalize line endings
+yarn.lock text eol=lf
+package-lock.json text eol=lf
+pnpm-lock.yaml text eol=lf
+
+# Binary files (never diff)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.mp4  binary
+*.mov  binary
+*.ogg  binary
+*.mp3  binary
+
+# Improve diffs for Markdown and docs
+*.md diff=markdown
+
+# Improve diffs for TypeScript / JavaScript
+*.ts diff=javascript
+*.tsx diff=javascript
+*.js diff=javascript
+
+# Go files (use built-in Go diff driver if available)
+*.go diff=golang
+
+# -----------------------------
+# End of One Earth .gitattributes
+# -----------------------------
