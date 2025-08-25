@@ -24,14 +24,14 @@ Implement the first visualization: **Atmospheric CO₂** from NOAA GML.
 
 **Tasks**
 
-- [ ] Create `internal/connectors/co2_noaa.go`
+- [x] Create `internal/connectors/co2_noaa.go`
 
   - Fetch NOAA daily CSV (Mauna Loa) using `net/http` (add retry/backoff).
   - Parse into `[]Point{ T, V }`.
   - Skip missing/flagged rows, drop NaNs.
   - Return latest + full slice.
 
-- [ ] Add in-memory cache (`internal/cache/memory.go`)
+- [x] Add in-memory cache (`internal/cache/memory.go`)
 
   - TTL ~30m (configurable).
   - Keys: `co2:latest`, `co2:daily:30d`.
