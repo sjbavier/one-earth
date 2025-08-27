@@ -20,3 +20,19 @@ This caching layer improves performance and resilience by reducing repeated upst
   `"one-earth-api/internal/connectors"`
 - Use the package name declared inside the Go source files for referencing (e.g., `connectors`).
 - Avoid using relative or ambiguous import paths like `"internal/connectors"` or `"backend/internal/connectors"`.
+
+---
+
+## Directive to Utilize Context7 MCP Server
+
+The Context7 MCP server can be leveraged to enhance development by providing better code, library information, and tooling support for the CO₂ data backend.
+
+- Use the Context7 MCP server to assist in managing cache retrieval and refresh operations by integrating its tools that provide authoritative, up-to-date library and code insights.
+- Replace or augment the existing in-memory cache wrapper function `FetchCO2DataCached` in `internal/connectors/co2_cache.go` to utilize MCP server tools for fetching, caching, and validating CO₂ data.
+- Utilize MCP server capabilities to resolve library IDs, fetch documentation, and ensure best practices in code usage and dependencies.
+- Ensure fallback to cached data on upstream fetch failure remains intact.
+- Configure TTL and cache keys through MCP server settings if supported.
+- Update backend handlers to interact with MCP server endpoints or tools as needed.
+- Maintain existing import path conventions and package references.
+
+This integration aims to leverage MCP server capabilities for improved code quality, scalability, modularity, and maintainability of the CO₂ data backend.
