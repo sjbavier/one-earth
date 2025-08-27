@@ -9,11 +9,15 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
+
+	"one-earth-api/internal/http/handlers"
 )
 
 func main() {
 	port := os.Getenv("PORT")
-	if port == "" { port = "8080" }
+	if port == "" {
+		port = "8080"
+	}
 
 	r := chi.NewRouter()
 	r.Use(cors.Handler(cors.Options{
@@ -49,8 +53,13 @@ func main() {
 		})
 	})
 
+	r.Get("/api/metrics/co2", handlers.MetricLatest)
+	r.Get("/api/series/co2", handlers.Series)
+
 	log.Printf("listening on :%s", port)
-	if err := http.ListenAndServe(":"+port, r); err != nil { log.Fatal(err) }
+	if err := http.ListenAndServe(":"+port, r); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func writeJSON(w http.ResponseWriter, v any) {

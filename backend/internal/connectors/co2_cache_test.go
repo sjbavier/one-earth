@@ -2,13 +2,26 @@ package connectors
 
 import (
 	"context"
+	"net/http"
 	"testing"
 	"time"
 )
 
 func TestFetchCO2DataCached(t *testing.T) {
 	ctx := context.Background()
-	url := "testdata/sample_co2.csv" // use local test CSV file for simpler fix
+
+	// Start local HTTP server to serve sample CSV
+	handler := func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "testdata/sample_co2.csv")
+	}
+	server := http.Server{
+		Addr:    "127.0.0.1:8085",
+		Handler: http.HandlerFunc(handler),
+	}
+	go server.ListenAndServe()
+	defer server.Close()
+
+	url := "http://127.0.0.1:8085/sample_co2.csv"
 
 	// First call should fetch fresh data and cache it
 	latest1, all1, err1 := FetchCO2DataCached(ctx, url)
