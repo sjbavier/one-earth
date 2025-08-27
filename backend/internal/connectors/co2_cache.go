@@ -2,6 +2,7 @@ package connectors
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"one-earth-api/internal/cache"
@@ -30,6 +31,9 @@ func FetchCO2DataCached(ctx context.Context, url string) (latest Point, all []Po
 	// Cache miss or expired, fetch fresh data
 	latest, all, err = FetchCO2Data(ctx, url)
 	if err != nil {
+		// Log the error for debugging
+		fmt.Println("FetchCO2Data error:", err)
+
 		// If fetch fails but cache exists, return cached data as fallback
 		if foundLatest && foundDaily {
 			latest, _ = cachedLatest.(Point)

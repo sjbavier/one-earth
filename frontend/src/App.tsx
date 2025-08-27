@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 import ExampleChart from "./tiles/ExampleChart";
+import { CO2Tile } from "./tiles/CO2Tile";
 
 const guessApi = () => {
   const { origin } = window.location;
@@ -12,7 +13,7 @@ export default function App() {
   const [msg, setMsg] = useState("…loading");
   const API = guessApi();
   const siteUrl =
-    import.meta.env.VITE_PUBLIC_SITE_URL || "https://one-earth.info";
+    (import.meta as any).env?.VITE_PUBLIC_SITE_URL ?? "https://one-earth.info";
 
   useEffect(() => {
     fetch(`${API}/api/hello`)
@@ -32,6 +33,7 @@ export default function App() {
       <h1>One Earth</h1>
       <ThemeToggle />
       <ExampleChart />
+      <CO2Tile />
 
       <p>
         API says: <strong>{msg}</strong>

@@ -54,7 +54,7 @@ Implement the first visualization: **Atmospheric CO₂** from NOAA GML.
   - Cache returns last good value.
   - API returns sorted, valid JSON.
 
-- [ ] Fix failing tests:
+- [x] Fix failing tests:
   - Cache TTL expiration test has timing issues.
   - CO2 cache test requires local HTTP server for CSV fetch.
 
@@ -64,22 +64,22 @@ Implement the first visualization: **Atmospheric CO₂** from NOAA GML.
 
 **Tasks**
 
-- [ ] Add schema definitions (`src/schemas/co2.ts`) with Zod.
-- [ ] Add hooks (`src/hooks/useCO2.ts`) using TanStack Query.
+- [x] Add schema definitions (`src/schemas/co2.ts`) with Zod.
+- [x] Add hooks (`src/hooks/useCO2.ts`) using TanStack Query.
 
   - `useCO2Latest()` → fetch `/api/metrics/co2`.
   - `useCO2Series(days)` → fetch `/api/series/co2`.
 
-- [ ] Add `src/tiles/CO2Tile.tsx`
+- [x] Add `src/tiles/CO2Tile.tsx`
 
   - Show chip: last updated UTC.
   - Show stat: latest ppm (rounded 0.1).
   - Show sparkline (last 30 days) with Vega-Lite + theme.
   - Show muted source/license.
 
-- [ ] Integrate into `App.tsx` (add tile into grid).
+- [x] Integrate into `App.tsx` (add tile into grid).
 
-- [ ] Error/Loading states:
+- [x] Error/Loading states:
   - Loading → “Loading…”
   - Error → “Data unavailable — retrying…”
 
@@ -94,6 +94,19 @@ Implement the first visualization: **Atmospheric CO₂** from NOAA GML.
 - [ ] Validate CORS: dev = `*`, prod = `https://one-earth.info`.
 - [ ] Ensure `/api/metrics/co2` + `/api/series/co2` pass Zod parsing.
 - [ ] Visual QA: Sparkline renders, value is shown, theme applies.
+
+---
+
+## Debugging
+
+**Tasks**
+
+- [ ] Investigate 503 errors on backend endpoints:
+  - `GET /api/metrics/co2`
+  - `GET /api/series/co2?days=30`
+- [ ] Add logging to `FetchCO2DataCached` and `FetchCO2Data` functions.
+- [ ] Test backend endpoints directly with curl or httpie.
+- [ ] Check backend logs for fetch errors or cache misses.
 
 ---
 

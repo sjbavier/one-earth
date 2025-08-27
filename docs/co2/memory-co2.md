@@ -35,4 +35,16 @@ The Context7 MCP server can be leveraged to enhance development by providing bet
 - Update backend handlers to interact with MCP server endpoints or tools as needed.
 - Maintain existing import path conventions and package references.
 
-This integration aims to leverage MCP server capabilities for improved code quality, scalability, modularity, and maintainability of the CO₂ data backend.
+---
+
+## Frontend Schema Definitions Added
+
+- Added Zod schema definitions for CO₂ data in `frontend/src/schemas/co2.ts`.
+- Schemas include:
+  - `PointSchema` for individual CO₂ data points with timestamp `T` and value `V`.
+  - `MetricLatestSchema` for latest CO₂ metric with `timestamp` and `value`.
+  - `SeriesSchema` as an array of `PointSchema`.
+- Installed `zod` package in frontend dependencies.
+- Fixed TypeScript typing issues in schema file.
+
+This update enables type-safe validation and parsing of CO₂ data fetched from backend API endpoints in the frontend React application.
