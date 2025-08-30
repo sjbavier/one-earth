@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 import ExampleChart from "./tiles/ExampleChart";
 import { CO2Tile } from "./tiles/CO2Tile";
+import SwaggerUIComponent from "./components/SwaggerUI";
 
 const guessApi = () => {
   const { origin } = window.location;
@@ -34,6 +35,9 @@ export default function App() {
       <ThemeToggle />
       <ExampleChart />
       <CO2Tile />
+
+      <h2>API Documentation</h2>
+      <SwaggerUIComponent />
 
       <p>
         API says: <strong>{msg}</strong>

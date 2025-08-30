@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: One Earth API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "ok"
+  /api/hello:
+    get:
+      summary: Greeting endpoint
+      responses:
+        "200":
+          description: Greeting message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Hello from One Earth API"
+  /api/metrics/{slug}:
+    get:
+      summary: Get latest metric snapshot by slug
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+          description: Metric slug identifier
+      responses:
+        "200":
+          description: Latest metric snapshot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  slug:
+                    type: string
+                    example: co2-daily
+                  value:
+                    type: number
+                    example: 420.5
+                  unit:
+                    type: string
+                    example: ppm
+                  updated_at:
+                    type: string
+                    format: date-time
+                    example: "2025-08-29T00:00:00Z"
+                  source_name:
+                    type: string
+                    example: NOAA GML
+                  source_url:
+                    type: string
+                    example: https://gml.noaa.gov/ccgg/trends/
+                  license:
+                    type: string
+                    example: NOAA public domain
+        "404":
+          description: Metric not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Metric not found
+  /api/series/{slug}:
+    get:
+      summary: Get time series data for a metric
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+          description: Metric slug identifier
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date-time
+          required: false
+          description: Start date/time for series
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date-time
+          required: false
+          description: End date/time for series
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: false
+          description: Maximum number of points to return
+        - in: query
+          name: granularity
+          schema:
+            type: string
+          required: false
+          description: Granularity of data points (e.g., daily, hourly)
+      responses:
+        "200":
+          description: Time series data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  slug:
+                    type: string
+                    example: co2-daily
+                  series:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                          example: "2025-08-28T00:00:00Z"
+                        value:
+                          type: number
+                          example: 419.8
+        "404":
+          description: Metric not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Metric not found
+  /stream/tiles:
+    get:
+      summary: Server-Sent Events stream for live tile updates
+      responses:
+        "200":
+          description: SSE stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
