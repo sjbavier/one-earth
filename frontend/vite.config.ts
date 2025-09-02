@@ -8,7 +8,7 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         // Adjust paths if your front-end is not at repo root
-        { src: "docs/openapi/openapi.yaml", dest: "/openapi.yaml" }, // => /openapi.yaml
+        { src: "openapi/openapi.yaml", dest: "/openapi.yaml" }, // => /openapi.yaml
       ],
     }),
   ],
