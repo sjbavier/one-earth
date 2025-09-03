@@ -37,7 +37,7 @@ export default function App() {
       <CO2Tile />
 
       <h2>API Documentation</h2>
-      {/* <SwaggerUIComponent /> */}
+      <SwaggerUIComponent />
 
       <p>
         API says: <strong>{msg}</strong>
